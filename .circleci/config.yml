@@ -11,8 +11,9 @@ jobs:
       - run:
           name: Arranca jar
           commands:
-            - scp -P 2222 target/helloWorldRest-1.0.0.jar thatilike@192.185.21.105:public_html/
-            - ssh $SSH_USER@$SSH_HOST "java -jar <ruta>/helloWorldRest-1.0.0.jar"
+            - scp -P 22 target/helloWorldRest-1.0.0.jar legosoft@5.189.172.240:~/testCI
+            - ssh $SSH_USER@$SSH_HOST "nohup java -jar ~/testCI/helloWorldRest-1.0.0.jar"
+
 
 workflows:
   maven_test:
