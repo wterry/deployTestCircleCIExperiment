@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Arranca jar
           command: >-
-            - ssh legosoft@5.189.172.240 -v
+            - ssh legosoft@5.189.172.240
 
 
 workflows:
