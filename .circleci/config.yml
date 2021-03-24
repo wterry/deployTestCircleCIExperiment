@@ -19,8 +19,6 @@ jobs:
             ssh $SSH_USER@$SSH_HOST "nohup java -jar ~/testCI/helloWorldRest-1.0.0.jar"
 
 workflows:
-  maven_test:
+  maven_manual_deploy:
     jobs:
-      - empaca:
-          requires:
-            - maven/test
+      - empaca
