@@ -15,9 +15,8 @@ jobs:
       - run:
           name: Arranca jar
           command: >-
-            - ssh -v legosoft@5.189.172.240
-            #scp -P 22 target/helloWorldRest-1.0.0.jar legosoft@5.189.172.240:~/testCI &&
-            #ssh legosoft@5.189.172.240 "nohup java -jar ~/testCI/helloWorldRest-1.0.0.jar"
+            - ssh legosoft@5.189.172.240 -v
+
 
 workflows:
   maven_manual_deploy:
