@@ -1,0 +1,23 @@
+version: 2.1
+
+orbs:
+  maven: circleci/maven@1.1.1
+
+jobs:
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Arranca jar
+          commands:
+            - scp -P 2222 target/helloWorldRest-1.0.0.jar thatilike@192.185.21.105:public_html/
+            - ssh $SSH_USER@$SSH_HOST "java -jar <ruta>/helloWorldRest-1.0.0.jar"
+
+workflows:
+  maven_test:
+    jobs:
+      - maven/package # checkout, build, package
+      - deploy
+
+
