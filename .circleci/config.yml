@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  maven: circleci/maven@1.1.1
-
 jobs:
   empaca:
     docker: # run the steps with Docker
@@ -15,24 +12,15 @@ jobs:
       - run:
           name: Empaca
           command: mvn install
-  deploy:
-    machine:
-      enabled: true
-    steps:
       - run:
           name: Arranca jar
           command: >-
             scp -P 22 target/helloWorldRest-1.0.0.jar legosoft@5.189.172.240:~/testCI &&
             ssh $SSH_USER@$SSH_HOST "nohup java -jar ~/testCI/helloWorldRest-1.0.0.jar"
 
-
 workflows:
   maven_test:
     jobs:
-      - maven/test
       - empaca:
           requires:
             - maven/test
-      - deploy:
-         requires:
-            - empaca
