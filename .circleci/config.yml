@@ -4,6 +4,8 @@ version: 2.1
 
 jobs:
   build:
+    machine:
+      enabled: true
     steps:
       - run:
           name: Empaca
