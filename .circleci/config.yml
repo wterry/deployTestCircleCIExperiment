@@ -21,13 +21,13 @@ jobs:
           command: cat ~/.ssh/known_hosts
       - run:
           name: copia archivo
-          command: scp -P 22 target/helloWorldRest-1.0.0.jar legosoft@5.189.172.240:~/testCI
+          command: scp -P 22 target/helloWorldRest-1.0.0.jar $SSH_USER@$SSH_HOST:~/testCI
       - run:
           name: autoriza archivo
-          command: ssh legosoft@5.189.172.240 -v chmod 755 /home/legosoft/testCI/helloWorldRest-1.0.0.jar
+          command: ssh $SSH_USER@$SSH_HOST -v chmod 755 /home/legosoft/testCI/helloWorldRest-1.0.0.jar
       - run:
           name: arranca aplicacion
-          command: ssh legosoft@5.189.172.240 -v nohup java -jar /home/legosoft/testCI/helloWorldRest-1.0.0.jar
+          command: ssh $SSH_USER@$SSH_HOST -v nohup java -jar /home/legosoft/testCI/helloWorldRest-1.0.0.jar
 
 workflows:
   maven_manual_deploy:
