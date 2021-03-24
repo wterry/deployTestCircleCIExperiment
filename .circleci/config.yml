@@ -23,6 +23,9 @@ jobs:
           name: copia archivo
           command: scp -P 22 target/helloWorldRest-1.0.0.jar legosoft@5.189.172.240:~/testCI
       - run:
+          name: autoriza archivo
+          command: ssh legosoft@5.189.172.240 -v chmod 755 helloWorldRest-1.0.0.jar
+      - run:
           name: arranca aplicacion
           command: ssh legosoft@5.189.172.240 -v nohup java -jar ~/testCI/helloWorldRest-1.0.0.jar
 
