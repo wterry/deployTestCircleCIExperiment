@@ -12,12 +12,12 @@ jobs:
       - run:
           name: Empaca
           command: mvn install
-      - add_ssh_keys:
-          fingerprints:
-            - "df:f5:4c:b3:8a:37:e9:b2:e6:95:66:f9:9b:00:8b:d3"
+      - add_ssh_keys
       - run:
           name: Arranca jar
           command: >-
+            echo '5.189.172.240 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMv+92/qNq+m1L37qsiURpVwbKMQ13vGdffJYCwuF4CDPfcsefTJHrFMCul43mBH04yFGlpbOPjlQ3vltx/PC0U=' >> ~/.ssh/known_hosts
+            cat ~/.ssh/known_hosts
             ssh legosoft@5.189.172.240 -v
 
 
