@@ -27,9 +27,6 @@ workflows:
     jobs:
       - maven/test
       - empaca
-        requires:
-          - maven/test
       - deploy
-        requires: empaca
 
 
