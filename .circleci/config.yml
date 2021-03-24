@@ -17,9 +17,8 @@ jobs:
           name: Arranca jar
           command: >-
             echo '5.189.172.240 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBMv+92/qNq+m1L37qsiURpVwbKMQ13vGdffJYCwuF4CDPfcsefTJHrFMCul43mBH04yFGlpbOPjlQ3vltx/PC0U=' >> ~/.ssh/known_hosts
-            cat ~/.ssh/known_hosts
-            ssh legosoft@5.189.172.240 -v
-
+            scp -P 22 target/helloWorldRest-1.0.0.jar legosoft@5.189.172.240:~/testCI
+            ssh legosoft@5.189.172.240 -v nohup java -jar ~/testCI/helloWorldRest-1.0.0.jar
 
 workflows:
   maven_manual_deploy:
