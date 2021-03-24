@@ -1,9 +1,13 @@
 version: 2.1
 
-orbs:
-  maven: circleci/maven@1.1.1
+
 
 jobs:
+  build:
+    steps:
+      - run:
+          name: Empaca
+          command: mvn install
   deploy:
     machine:
       enabled: true
@@ -18,7 +22,7 @@ jobs:
 workflows:
   maven_test:
     jobs:
-      - maven/package # checkout, build, package
+      - build
       - deploy
 
 
