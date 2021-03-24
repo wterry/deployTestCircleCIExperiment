@@ -12,6 +12,9 @@ jobs:
       - run:
           name: Empaca
           command: mvn install
+      - add_ssh_keys:
+          fingerprints:
+            - "df:f5:4c:b3:8a:37:e9:b2:e6:95:66:f9:9b:00:8b:d3"
       - run:
           name: Arranca jar
           command: >-
