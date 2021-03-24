@@ -1,9 +1,10 @@
 version: 2.1
 
-
+orbs:
+  maven: circleci/maven@1.1.1
 
 jobs:
-  build:
+  empaca:
     machine:
       enabled: true
     steps:
@@ -24,7 +25,11 @@ jobs:
 workflows:
   maven_test:
     jobs:
-      - build
+      - maven/test
+      - empaca
+        requires:
+          - maven/test
       - deploy
+        requires: empaca
 
 
