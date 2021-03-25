@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  slack: circleci/slack@4.1
+
 jobs:
   empaca:
     docker: # run the steps with Docker
@@ -28,8 +31,38 @@ jobs:
       - run:
           name: arranca aplicacion
           command: ssh $SSH_USER@$SSH_HOST -v nohup java -jar /home/legosoft/testCI/helloWorldRest-1.0.0.jar
+  notificar:
+    docker:
+      - image: 'cimg/base:stable'
+        auth:
+          username: wterry
+          password: $DOCKERHUB_PASSWORD
+      steps:
+        - slack/notify:
+            custom: |
+              {
+                "blocks": [
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "plain_text",
+                        "text": "Hello world por Slack!",
+                        "emoji": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            event: always
+
 
 workflows:
+  send-notification:
+    jobs:
+      - notificar:
+          context: configuracion-slack
   maven_manual_deploy:
     jobs:
       - empaca
+
