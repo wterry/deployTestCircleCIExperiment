@@ -30,7 +30,7 @@ jobs:
           command: ssh $SSH_USER@$SSH_HOST -v chmod 755 /home/legosoft/testCI/helloWorldRest-1.0.0.jar
       - run:
           name: arranca aplicacion
-          command: ssh $SSH_USER@$SSH_HOST -v nohup java -jar /home/legosoft/testCI/helloWorldRest-1.0.0.jar
+          command: ssh $SSH_USER@$SSH_HOST -v nohup java -jar /home/legosoft/testCI/helloWorldRest-1.0.0.jar &
   notificar:
     docker:
       - image: 'cimg/base:stable'
