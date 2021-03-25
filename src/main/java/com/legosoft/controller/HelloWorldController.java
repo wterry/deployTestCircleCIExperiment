@@ -14,7 +14,7 @@ public class HelloWorldController {
 
     @GetMapping("/{nombre}")
     public ResponseEntity<String> sayHello(@PathVariable("nombre") String nombre) {
-        System.out.println("Peticion reicibida...");
+        System.out.println("Peticion reicibida durante presentacion...");
         return new ResponseEntity("hello " +  nombre + "!", HttpStatus.OK);
     }
 }
