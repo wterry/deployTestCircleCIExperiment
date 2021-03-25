@@ -37,9 +37,9 @@ jobs:
         auth:
           username: wterry
           password: $DOCKERHUB_PASSWORD
-      steps:
-        - slack/notify:
-            custom: |
+    steps:
+      - slack/notify:
+          custom: |
               {
                 "blocks": [
                   {
@@ -54,7 +54,7 @@ jobs:
                   }
                 ]
               }
-            event: always
+          event: always
 
 
 workflows:
